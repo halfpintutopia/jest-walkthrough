@@ -84,6 +84,24 @@ function showTurns() {
   }, 800);
 }
 
-// playerturn()
+/**
+ * Check if the player click move matches the corresponding to order of array
+ * If they do not match we display an alert and start a new game
+ * ---------------------------------------------------------------------------
+ * call addTurn() if new game has not started
+ */
+function playerTurn() {
+  let i = game.playerMoves.length -1;
+  if (game.currentGame[i] === game.playerMoves[i]) {
+    if (game.currentGame.length === game.playerMoves.length) {
+      game.score++;
+      showScore();
+      addTurn();
+    }
+  } else {
+    alert('Wrong move!');
+    newGame();
+  }
+}
 
-module.exports = {game, newGame, showScore, addTurn, lightsOn, showTurns}
+module.exports = {game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn}
