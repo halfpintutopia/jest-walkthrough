@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const {game} = require('../game');
+const {game, newGame, showScore} = require('../game');
 
 beforeAll(() => {
   let fs = require("fs");
@@ -30,3 +30,26 @@ describe('game object contains correct keys', function () {
   });
 });
 
+
+describe('newGame works correctly', function () {
+  beforeAll(() => {
+    game.score = 42;
+    game.playerMoves = ['button1', 'button2', 'button3'];
+    game.currentGame = ['button1', 'button2', 'button3'];
+    document.getElementById('score').innerText = "42";
+    newGame();
+  });
+
+  test("should set the game score to zero", () => {
+    expect(game.score).toEqual(0);
+  });
+  test("should clear the play moves array", () => {
+    expect(game.playerMoves).toEqual([]);
+  });
+  test("should clear the current game array", () => {
+    expect(game.currentGame).toEqual([]);
+  });
+  test("should display zero for the element id of score", () => {
+    expect(document.getElementById('score').innerText).toBe(0);
+  });
+});
