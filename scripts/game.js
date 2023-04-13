@@ -33,7 +33,7 @@ function newGame() {
   for (let circle of document.getElementsByClassName('circle')) {
     if (circle.dataset.listener !== true) {
       circle.addEventListener('click', (e) => {
-        if(game.currentGame.length > 0) {
+        if(game.currentGame.length > 0 &&!game.turnInProgress) {
           let move = e.target.getAttribute('id');
           game.lastButon = move;
           lightsOn(move);

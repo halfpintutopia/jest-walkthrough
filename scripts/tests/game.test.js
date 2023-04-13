@@ -106,6 +106,12 @@ describe('game play works correctly', function () {
     showTurns();
     expect(game.turnInProgress).toBe(true);
   });
+  test('clicking during the computer sequence should fail', () => {
+    showTurns();
+    game.lastButon = '';
+    document.getElementById('button2').click();
+    expect(game.lastButon).toEqual('');
+  });
 });
 
 /**
