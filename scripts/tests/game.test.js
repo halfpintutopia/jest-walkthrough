@@ -4,7 +4,8 @@
 
 const {game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn} = require('../game');
 
-jest.spyOn(window, 'alert').mockImplementation(() => {})
+jest.spyOn(window, 'alert').mockImplementation(() => {
+})
 
 beforeAll(() => {
   let fs = require("fs");
@@ -100,6 +101,10 @@ describe('game play works correctly', function () {
     game.playerMoves.push('wrong');
     playerTurn();
     expect(window.alert).toBeCalledWith('Wrong move!');
+  });
+  test('should toggle turnInProgress or true', () => {
+    showTurns();
+    expect(game.turnInProgress).toBe(true);
   });
 });
 
