@@ -102,3 +102,9 @@ describe('game play works correctly', function () {
     expect(window.alert).toBeCalledWith('Wrong move!');
   });
 });
+
+/**
+ Additional tests
+ - What if the player click on a button before the game has started?
+ - What if the player clicks on a button during the computer's sequence?
+ */
