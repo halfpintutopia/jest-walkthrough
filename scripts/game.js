@@ -30,10 +30,29 @@ function newGame() {
   game.playerMoves = [];
   game.currentGame = [];
   showScore();
+  addTurn()
 }
 
 function showScore() {
   document.getElementById('score').innerText = game.score;
 }
 
-module.exports = {game, newGame, showScore}
+/**
+ * Clear play moves array
+ * Add a randomly selected button to the sequence
+ * -----------------------------------------------
+ * Call showTurns() function
+ */
+function addTurn() {
+  game.playerMoves = [];
+  game.currentGame.push(game.choices[Math.floor(Math.random() * 4)]);
+}
+
+function lightsOn(circle) {
+  document.getElementById(circle).classList.add('light');
+  setTimeout(() => {
+    document.getElementById(circle).classList.remove('light');
+  }, 400);
+}
+
+module.exports = {game, newGame, showScore, addTurn, lightsOn}
